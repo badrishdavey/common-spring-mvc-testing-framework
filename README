@@ -4,8 +4,8 @@ Features:
 - No need to learn new APIs or guide. Ready to use framework.
 - Custom View Resolver has been included in framework which will be used to hack rendering of JSP pages (which require server deployment).
 - This framework is a Plug/Play framework which requires minimal configuration.
-- This framework must only be used for Integration testing. Include it as JAR in your project (Scope: TEST only).
-- This framwork can be used for end to end integration testing. In turn, it can increase the code coverage unexpectedly. Thus, it will be ideal if you don't include end to end integration testing in your code coverage.
+- This framework must only be used for Integration testing. Include this project as JAR in your project (Scope: TEST only).
+- This framwork can be used for end to end integration testing. In turn, it can increase the code coverage unexpectedly. Thus, it will be ideal if you don't include mvc integration testing in your code coverage.
 - Work is still in progress becuase rendering of JSP pages without Server deployment is not feasible. I will keep working on finding some alternative and update this framework.
  
 How to use it:
@@ -48,4 +48,4 @@ public class AnyControllerTest extends AbstractControllerTestSupport{
 
 More updates will be coming soon...
 
-Thanks to Tejus and Ted Young for head start on spring mvc integration testing. For other views (like freemarker, XML/Json Views) which doesn't need server deployment, refer to: https://github.com/SpringSource/spring-test-mvc framework.
+Thanks to Tejus and Ted Young for head start on spring mvc integration testing. For other views (like freemarker and XML/Json) which don't depend on server deployment, please refer to: https://github.com/SpringSource/spring-test-mvc framework.
