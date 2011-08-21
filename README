@@ -14,12 +14,36 @@ MAVEN:
 
 - Update your pom.xml with following snippet:
 
-Custom View Resolver has been included in framework which will be used to hack rendering of JSP pages which require server deployment.
+<dependency>
+	<groupId>common.mvc.integration-test</groupId>
+	<artifactId>common-mvc-integration-testing</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<scope>test</scope>
+</dependency>
 
 - Checkout this project and deploy the distribution in your internal repository. (with same version that you mentioned above)
 
 - Enhance your Integration Test Suite using below sample as base:
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations="classpath:test-servlet.xml", loader=MockWebApplicationContextLoader.class)
+@MockWebApplication(name="Any-controller", webapp="/webapp")
+public class AnyControllerTest extends AbstractControllerTestSupport{
+
+// Your test code here.
+
+@Test
+	public void viewTest() throws ServletException, IOException {
+		MockHttpServletRequest request = new MockHttpServletRequest("GET", "ANY_URL");
+		MockHttpServletResponse response = new MockHttpServletResponse();
+		
+		getServletInstance().service(request, response);
+		String results = response.getContentAsString().trim();
+		
+// Your testing code here
+	}
+
+}
 
 
 More updates will be coming soon...
