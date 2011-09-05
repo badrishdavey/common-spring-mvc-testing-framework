@@ -48,4 +48,26 @@ public class AnyControllerTest extends AbstractControllerTestSupport{
 
 More updates will be coming soon...
 
+Testing a spring controller method having @ModelAttribute as parameter:
+
+** Pick the html element names and fill the paramter values in MockHttpRequest object and pass it over.
+
+Set the values in the request as parameters following the OGNL paths matching the model attribute/form paths.
+------------------------------------------------------------
+Example:
+
+    MockHttpServletRequest httpServletRequest = MockRequestResponseGenerator.mockRequest(getServletInstance().getServletContext(), "POST", "/test", paramters);
+    
+    //These paramters must be part of the ModelAttribute Object. Make sure, you are using custom property binding in case you have different object.
+    
+    		httpServletRequest.setParameter("name", "SPRING MVC INTEGRATION TEST 
+    TEMP");
+    		httpServletRequest.setParameter("id", "1");
+    		httpServletRequest.setParameter("desc", "SPRING MVC INTEGRATION TEST DESC");
+    			
+    		
+    		getServletInstance().service(httpServletRequest, httpServletResponse);
+
+---------------------------------------------------------------------
+
 Thanks to Tejus and Ted Young for head start on spring mvc integration testing. For other views (like freemarker and XML/Json) which don't depend on server deployment, please refer to: https://github.com/SpringSource/spring-test-mvc framework.

@@ -1,8 +1,7 @@
 package uk.kumar.rajesh.mvc.integration.testing;
 
 import javax.servlet.ServletException;
-
-import junit.framework.Assert;
+import static junit.framework.Assert.fail;
 
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.mock.web.MockServletConfig;
@@ -31,7 +30,7 @@ public abstract class AbstractControllerTestSupport {
 			try {
 				dispatcherServlet.init(new MockServletConfig());
 			} catch (ServletException se) {
-				Assert.fail("Unable to create a dispatcher servlet: " + se.getMessage());
+				fail("Unable to create a dispatcher servlet: " + se.getMessage());
 			}
 		}
 		return dispatcherServlet;

@@ -31,9 +31,13 @@ public class JSPViewResolver implements ViewResolver {
 		for(Object key: model.keySet())
 		{
 			String keyString = (String)key;
-			String valueString = convertModelMapValueToString(model.get(keyString));
-			//actualModelString = actualModelString + "KEYS IS: " + keyString + " and corresponding value is: " + valueString;
-			actualModelString = actualModelString + index + ". KEY IS: " + keyString + "\n";
+			String valueString = "NULL";
+			if(model.get(keyString)!=null)
+				valueString = convertModelMapValueToString(model.get(keyString));
+			if(valueString.equals(""))
+				valueString = "EMPTY";
+			actualModelString = actualModelString + index + ". KEY IS: " + keyString + " and corresponding value is: " + valueString + "\n";
+			index++;
 		}
 		return actualModelString;
 	}
@@ -47,6 +51,10 @@ public class JSPViewResolver implements ViewResolver {
 		else if(modelMapValue instanceof Map)
 		{
 			return convertAnyGenralMapToString((Map)modelMapValue);
+		}
+		else if(modelMapValue instanceof Enum)
+		{
+			return ((Enum) modelMapValue).name();
 		}
 		else
 		{
